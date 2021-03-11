@@ -6,4 +6,4 @@
 - tkinter
 - decimal
 
-![alt tag](https://i.ibb.co/Bcc6c8P/1.png)​ ![alt tag](https://i.ibb.co/bLHZrVJ/2.png)​ 
+![alt tag](https://i.ibb.co/Bcc6c8P/1.png)​     ![alt tag](https://i.ibb.co/bLHZrVJ/2.png)​ 
