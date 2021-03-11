@@ -46,13 +46,20 @@ def output_update():
     global result
     Label(root, text='', font='Courier 12', fg='#ffffff', bg='#000000').grid(row=0, column=0, columnspan=5)
     Label(root, text='', font='Courier 12', fg='#ffffff', bg='#000000').grid(row=2, column=0, columnspan=5)
-    output_text.config(text=result)
+    result = str(result)
+    if len(result) <= 13:
+        font_size = 35
+    elif len(result) <= 16:
+        font_size = 30
+    else:
+        font_size = 25
+    output_text.config(text=result, font = f'Courier {font_size}')
 
 def logicalc(operation):
     global stack
     global result
-    if operation.isdigit() or operation=='.':
-        if stack[1] == '' and len(stack[0]) < 23:
+    if operation.isdigit() or operation == '.':
+        if stack[1] == '' and len(stack[0]) < 9:
             if operation.isdigit():
                 stack[0] += operation
             elif operation == '.':
@@ -60,7 +67,7 @@ def logicalc(operation):
                     stack[0] += '.'
                 elif stack[0] == '':
                     stack += '0.'
-        elif stack[1] != '':
+        if stack[1] != '' and len(stack[2]) < 9:
             if operation.isdigit():
                 stack[2] += operation
             elif operation == '.':
@@ -69,9 +76,12 @@ def logicalc(operation):
                 elif stack[2] == '':
                     stack += '0.'
     elif operation in ['+', '-', '*', '/']:
-        stack[1] = operation
+        if operation == '-' and stack[0] == '':
+            stack[0] += '-'
+        else:
+            stack[1] = operation
     result = stack[0] + stack[1] + stack[2]
-    if operation == '=':
+    if operation == '=' and (stack[0] != '' and stack[1] != '' and stack[2] != ''):
         calculate()
     output_update()
 
@@ -82,7 +92,6 @@ def calculate():
     operation = stack.pop()
     operand_1 = Decimal(stack.pop())
     stack = ['', '', '']
-    # ВЫПОЛНЯЕМ ПОДСЧЕТЫ
     if operation == '+':
         result = operand_1 + operand_2
     elif operation == '-':
