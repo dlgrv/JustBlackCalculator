@@ -5,3 +5,5 @@
 Использовались следующие библиотеки:
 - tkinter
 - decimal
+
+![alt tag](https://i.ibb.co/VJJCJXN/1.png)​ ![alt tag](https://i.ibb.co/0ZBSfLt/2.png)​ 
